@@ -12,9 +12,7 @@ public class GunScript : MonoBehaviour {
 	public MouseLookScript mls;
 
 	[Header("Player movement properties")]
-	[Tooltip("Speed is determined via gun because not every gun has same properties or weights so you MUST set up your speeds here")]
 	public int walkingSpeed = 3;
-	[Tooltip("Speed is determined via gun because not every gun has same properties or weights so you MUST set up your speeds here")]
 	public int runningSpeed = 5;
 
 
@@ -477,14 +475,8 @@ public class GunScript : MonoBehaviour {
 
 
 
-			yield return new WaitForSeconds (reloadChangeBulletsTime - 0.5f);//minus ovo vrijeme cekanja na yield
-			if (meeleAttack == false && pmS.maxSpeed != runningSpeed) {
-				//print ("tu sam");
-				if (player.GetComponent<PlayerMovementScript> ()._freakingZombiesSound)
-					player.GetComponent<PlayerMovementScript> ()._freakingZombiesSound.Play ();
-				else
-					print ("Missing Freaking Zombies Sound");
-				
+			yield return new WaitForSeconds (reloadChangeBulletsTime - 0.5f);
+			if (meeleAttack == false && pmS.maxSpeed != runningSpeed) {				
 				if (bulletsIHave - amountOfBulletsPerLoad >= 0) {
 					bulletsIHave -= amountOfBulletsPerLoad - bulletsInTheGun;
 					bulletsInTheGun = amountOfBulletsPerLoad;

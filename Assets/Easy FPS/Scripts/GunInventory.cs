@@ -123,10 +123,10 @@ public class GunInventory : MonoBehaviour {
 	 * It will check if we carry a gun and destroy it, and its then going to load a gun prefab from our Resources Folder.
 	 */
 	IEnumerator Spawn(int _redniBroj){
-		if (weaponChanging)
+		/*if (weaponChanging)
 			weaponChanging.Play ();
 		else
-			print ("Missing Weapon Changing music clip.");
+			print ("Missing Weapon Changing music clip.");*/
 		if(currentGun){
 			if(currentGun.name.Contains("Gun")){
 

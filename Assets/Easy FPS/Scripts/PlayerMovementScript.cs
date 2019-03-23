@@ -330,8 +330,6 @@ public class PlayerMovementScript : MonoBehaviour {
 	[Header("Player SOUNDS")]
 	[Tooltip("Jump sound when player jumps.")]
 	public AudioSource _jumpSound;
-	[Tooltip("Sound while player makes when successfully reloads weapon.")]
-	public AudioSource _freakingZombiesSound;
 	[Tooltip("Sound Bullet makes when hits target.")]
 	public AudioSource _hitSound;
 	[Tooltip("Walk sound player makes.")]
