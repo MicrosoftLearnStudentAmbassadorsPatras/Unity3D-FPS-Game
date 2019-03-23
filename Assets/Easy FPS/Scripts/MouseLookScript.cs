@@ -130,7 +130,7 @@ void ApplyingStuff(){
 	currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, yRotationSpeed);
 	currentCameraXRotation = Mathf.SmoothDamp(currentCameraXRotation, wantedCameraXRotation, ref cameraXVelocity, xCameraSpeed);
 
-	WeaponRotation();
+	//WeaponRotation();
 
 	transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
 	myCamera.localRotation = Quaternion.Euler(currentCameraXRotation, 0, zRotation);
@@ -149,7 +149,7 @@ private GunScript gun;
  * same goes for the sword.
  * Incase we dont have a weapon or gun or it didnt find it, it will write into the console that it cant find a weapon.
  */
-void WeaponRotation(){
+/*void WeaponRotation(){
 	if(!weapon){
 		weapon = GameObject.FindGameObjectWithTag("Weapon");
 		if(weapon){
@@ -163,7 +163,7 @@ void WeaponRotation(){
 		}
 	}
 
-}
+}*/
 
 float deltaTime = 0.0f;
 }
