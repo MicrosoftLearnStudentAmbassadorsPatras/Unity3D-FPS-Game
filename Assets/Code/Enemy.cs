@@ -8,14 +8,17 @@ public class Enemy : MonoBehaviour
     Camera cam;
     UnityEngine.AI.NavMeshAgent navMeshAgent;
     Animator animator;
-	//public GameObject lazerShot;
-	//AudioSource audio;
-	//public GameObject laserEmiter;
+    //public GameObject lazerShot;
+    //AudioSource audio;
+    //public GameObject laserEmiter;
 
-    float positionUpdateTime = 0.25f;
-    float positionUpdateTimeElapsed = 0.0f;
+    //float positionUpdateTime = 0.25f;
+    //float positionUpdateTimeElapsed = 0.0f;
     //float shootTime = 0.8f;
     //float shootTimeElapsed = 0.0f;
+
+    public int maxHealth;
+    
 
     public float attackDistance;
 
@@ -30,7 +33,7 @@ public class Enemy : MonoBehaviour
         //Invoke("Shoot", Random.Range(1f, 5f));
 
 
-        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
+        //Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     // Update is called once per frame
@@ -45,9 +48,14 @@ public class Enemy : MonoBehaviour
             positionUpdateTimeElapsed = 0.0f;
         }*/
 
-
-        navMeshAgent.SetDestination(player.position);
-        //navMeshAgent.destination = player.position;
+        if (maxHealth <= 0)
+        {
+            navMeshAgent.isStopped = true;
+            animator.SetBool("dead", true);
+            GetComponent<Collider>().enabled = false;
+        }
+        else
+            navMeshAgent.SetDestination(player.position);
 
 
 
@@ -76,4 +84,9 @@ public class Enemy : MonoBehaviour
 		}
 		Invoke("Shoot", Random.Range(1f, 5f));
 	}*/
+
+    public void ReceiveDamage()
+    {
+        maxHealth--;
+    }
 }

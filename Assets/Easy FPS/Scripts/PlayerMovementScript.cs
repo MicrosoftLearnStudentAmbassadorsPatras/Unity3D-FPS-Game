@@ -401,10 +401,9 @@ public class PlayerMovementScript : MonoBehaviour
     public AudioSource _runSound;
 
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Damage");
 
