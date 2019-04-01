@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     //float shootTime = 0.8f;
     //float shootTimeElapsed = 0.0f;
 
+    public float attackDistance;
+
     // Use this for initialization
     void Start()
     {
@@ -26,6 +28,9 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         //audio = GetComponent<AudioSource>();
         //Invoke("Shoot", Random.Range(1f, 5f));
+
+
+        Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     // Update is called once per frame
@@ -42,19 +47,25 @@ public class Enemy : MonoBehaviour
 
 
         navMeshAgent.SetDestination(player.position);
+        //navMeshAgent.destination = player.position;
 
 
-        if (navMeshAgent.remainingDistance <= 4f)
-            animator.SetBool("enemyMoving", false);
+
+        if (navMeshAgent.remainingDistance <= attackDistance)
+        {
+            animator.SetBool("attacking", true);
+        }
         else
-            animator.SetBool("enemyMoving", true);
+        {
+            animator.SetBool("attacking", false);
+        }
 
-        Vector3 direction = (player.transform.position - this.transform.position).normalized; //direction towards player
+        //Vector3 direction = (player.transform.position - this.transform.position).normalized; //direction towards player
 
-        this.transform.rotation = Quaternion.LookRotation(direction); //make it a Quaternion and assign it
+        //this.transform.rotation = Quaternion.LookRotation(direction); //make it a Quaternion and assign it
     }
 
-	/*void Shoot()
+    /*void Shoot()
 	{
 		if (navMeshAgent.remainingDistance <= 6f)
 		{
