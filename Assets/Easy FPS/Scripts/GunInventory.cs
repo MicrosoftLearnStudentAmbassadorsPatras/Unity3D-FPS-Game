@@ -125,8 +125,7 @@ public class GunInventory : MonoBehaviour {
 	IEnumerator Spawn(int _redniBroj){
 		if (weaponChanging)
 			weaponChanging.Play ();
-		/*else
-			print ("Missing Weapon Changing music clip.");*/
+
 		if(currentGun){
 			if(currentGun.name.Contains("Gun")){
 

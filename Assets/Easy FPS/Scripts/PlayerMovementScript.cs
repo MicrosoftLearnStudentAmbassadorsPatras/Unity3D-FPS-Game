@@ -114,8 +114,6 @@ public class PlayerMovementScript : MonoBehaviour
 	*/
     void Update()
     {
-
-
         Jumping();
 
         Crouching();
@@ -125,7 +123,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         if (maximumHealth <= 0)
         {
-            Debug.Log("Dead");
             GameOver();
         }
 
@@ -195,16 +192,13 @@ public class PlayerMovementScript : MonoBehaviour
             Debug.DrawRay(transform.position, transform.up * -1f, Color.red, 0.0f);
             if (groundedInfo.transform != null)
             {
-                //print ("vracam true");
                 return true;
             }
             else
             {
-                //print ("vracam false");
                 return false;
             }
         }
-        //print ("nisam if dosao");
 
         return false;
     }
@@ -331,9 +325,7 @@ public class PlayerMovementScript : MonoBehaviour
             if (GetComponent<GunInventory>().currentGun.GetComponent<GunScript>().meeleAttack == true && been_to_meele_anim == false)
             {
                 been_to_meele_anim = true;
-                //	if (isRunning == false) {
                 StartCoroutine("MeeleAttackWeaponHit");
-                //	}
             }
         }
 
@@ -406,12 +398,11 @@ public class PlayerMovementScript : MonoBehaviour
     public AudioSource _runSound;
 
 
+    // Receive Damage
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Damage");
-
             maximumHealth -= damageDealedPerHit;
 
             damageIndicator.SetActive(true);
@@ -426,7 +417,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void GameOver()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }

@@ -6,7 +6,6 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemy;
     public Vector3 rndPositon;
-    //public int n;
 
     public float frequency;
     public float spawnRadius;

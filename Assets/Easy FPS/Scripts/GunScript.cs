@@ -441,10 +441,7 @@ public class GunScript : MonoBehaviour {
 			}
 				
 			else{
-				//if(!aiming)
 				StartCoroutine("Reload_Animation");
-				//if(emptyClip_sound_source)
-				//	emptyClip_sound_source.Play();
 			}
 
 		}
@@ -479,11 +476,6 @@ public class GunScript : MonoBehaviour {
 
 			yield return new WaitForSeconds (reloadChangeBulletsTime - 0.5f);//minus ovo vrijeme cekanja na yield
 			if (meeleAttack == false && pmS.maxSpeed != runningSpeed) {
-				//print ("tu sam");
-				/*if (player.GetComponent<PlayerMovementScript> ()._freakingZombiesSound)
-					player.GetComponent<PlayerMovementScript> ()._freakingZombiesSound.Play ();
-				else
-					print ("Missing Freaking Zombies Sound");*/
 				
 				if (bulletsIHave - amountOfBulletsPerLoad >= 0) {
 					bulletsIHave -= amountOfBulletsPerLoad - bulletsInTheGun;

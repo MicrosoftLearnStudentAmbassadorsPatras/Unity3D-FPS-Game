@@ -130,8 +130,6 @@ void ApplyingStuff(){
 	currentYRotation = Mathf.SmoothDamp(currentYRotation, wantedYRotation, ref rotationYVelocity, yRotationSpeed);
 	currentCameraXRotation = Mathf.SmoothDamp(currentCameraXRotation, wantedCameraXRotation, ref cameraXVelocity, xCameraSpeed);
 
-	//WeaponRotation();
-
 	transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
 	myCamera.localRotation = Quaternion.Euler(currentCameraXRotation, 0, zRotation);
 
@@ -143,57 +141,6 @@ private float gunWeightX,gunWeightY;
 [HideInInspector]
 public GameObject weapon;
 private GunScript gun;
-/*
- * Rotating current weapon from here.
- * Checkig if we have a weapon, if we do, if its a gun it iwll fetch the gun and rotate it accordingly,
- * same goes for the sword.
- * Incase we dont have a weapon or gun or it didnt find it, it will write into the console that it cant find a weapon.
- */
-/*void WeaponRotation(){
-	if(!weapon){
-		weapon = GameObject.FindGameObjectWithTag("Weapon");
-		if(weapon){
-			if(weapon.GetComponent<GunScript>()){
-				try{
-					gun = GameObject.FindGameObjectWithTag("Weapon").GetComponent<GunScript>();
-				}catch(System.Exception ex){
-					print("gun not found->"+ex.StackTrace.ToString());
-				}
-			}
-		}
-	}
-
-}*/
 
 float deltaTime = 0.0f;
-/*[Tooltip("Shows FPS in top left corner.")]
-public bool showFps = true;*/
-/*
-* Shows fps if its set to true.
-*/
-/*void OnGUI(){
-
-	if(showFps){
-		FPSCounter();
-	}
-
-}*/
-/*
-* Calculating real fps because unity status tab shows too much fps even when its not that mutch so i made my own.
-*/
-/*void FPSCounter(){
-	int w = Screen.width, h = Screen.height;
-
-	GUIStyle style = new GUIStyle();
-
-	Rect rect = new Rect(0, 0, w, h * 2 / 100);
-	style.alignment = TextAnchor.UpperLeft;
-	style.fontSize = h * 2 / 100;
-	style.normal.textColor = Color.white;
-	float msec = deltaTime * 1000.0f;
-	float fps = 1.0f / deltaTime;
-	string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
-	GUI.Label(rect, text, style);
-}*/
-
 }
