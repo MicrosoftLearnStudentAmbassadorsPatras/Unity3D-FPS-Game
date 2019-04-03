@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovementScript : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     public int maximumHealth;
     public int damageDealedPerHit;
+    private GameObject damageIndicator;
 
     /*
 	 * Getting the Players rigidbody component.
@@ -29,6 +31,8 @@ public class PlayerMovementScript : MonoBehaviour
         cameraMain = transform.Find("Main Camera").transform;
         bulletSpawn = cameraMain.Find("BulletSpawn").transform;
         ignoreLayer = 1 << LayerMask.NameToLayer("Player");
+
+        damageIndicator = cameraMain.Find("DamageIndicator").transform.GetComponent<Canvas>().gameObject;
 
     }
     private Vector3 slowdownV;
@@ -119,9 +123,10 @@ public class PlayerMovementScript : MonoBehaviour
         WalkingSound();
 
 
-        if(maximumHealth <= 0)
+        if (maximumHealth <= 0)
         {
             Debug.Log("Dead");
+            GameOver();
         }
 
 
@@ -408,7 +413,20 @@ public class PlayerMovementScript : MonoBehaviour
             Debug.Log("Damage");
 
             maximumHealth -= damageDealedPerHit;
+
+            damageIndicator.SetActive(true);
+            Invoke("DeactivateDamageIndicator", 0.5f);
         }
+    }
+
+    private void DeactivateDamageIndicator()
+    {
+        damageIndicator.SetActive(false);
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 
 }
